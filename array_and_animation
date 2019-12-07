@@ -1,0 +1,240 @@
+Public Class Form9
+    Public Shared vending(4, 4) As Integer
+    Private Sub Form9_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        PbUang.Visible = False
+        PbUang1.Visible = False
+        PbUang2.Visible = False
+        PbUang3.Visible = False
+        PbUang4.Visible = False
+        PbUang5.Visible = False
+        PbUang6.Visible = False
+        PbA.Visible = False
+        PbAE1.Visible = False
+        PbAE2.Visible = False
+        PbA1.Visible = False
+        BtnAmbil.Enabled = False
+
+        PilA.Enabled = False
+        PilB.Enabled = False
+        PilC.Enabled = False
+        PilD.Enabled = False
+        Pil1.Enabled = False
+        Pil2.Enabled = False
+        Pil3.Enabled = False
+        Pil4.Enabled = False
+        For x As Integer = 0 To 3
+            For y As Integer = 0 To 3
+                vending(x, y) = 5
+                If (x = 0) Then
+                    lblqA1.Text = "Q=(" + vending(x, y).ToString + ")"
+                    lblqA2.Text = "Q=(" + vending(x, y).ToString + ")"
+                    lblqA3.Text = "Q=(" + vending(x, y).ToString + ")"
+                    lblqA4.Text = "Q=(" + vending(x, y).ToString + ")"
+                End If
+
+            Next
+        Next
+    End Sub
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+
+    End Sub
+
+    Private Sub Label9_Click(sender As Object, e As EventArgs) Handles Label9.Click
+
+    End Sub
+
+    Private Sub Label17_Click(sender As Object, e As EventArgs) Handles Label17.Click
+
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        If (PbUang.Visible = True) Then
+            PbUang.Location = New Point(76, PbUang.Location.Y - 1)
+            If (PbUang.Location.Y = 92) Then
+                PbUang.Visible = False
+                PbUang5.Visible = True
+            End If
+
+        Else
+            If (PbUang5.Visible = True) Then
+                If (PbUang5.Location.Y = 90) Then
+                    PbUang5.Visible = False
+                    Timer1.Enabled = False
+                    BtnBeli.Enabled = False
+                    PilA.Enabled = True
+                    PilB.Enabled = True
+                    PilC.Enabled = True
+                    PilD.Enabled = True
+                    PbUang.Location = New Point(76, 110)
+                End If
+            End If
+
+        End If
+        'PbUang.Location = New Point(76, 110)
+        'PbUang.Location = New Point(76, 108)
+        'PbUang.Location = New Point(76, 106)
+        'PbUang.Location = New Point(76, 104)
+        'PbUang.Location = New Point(76, 90)
+        'PbUang.Visible = False
+        'PbUang1.Visible = True
+        'PbUang1.Location = New Point(76, 100)
+        'PbUang1.Visible = False
+        'PbUang2.Visible = True
+        'PbUang2.Location = New Point(76, 98)
+        'PbUang2.Visible = False
+        'PbUang3.Visible = True
+        'PbUang3.Location = New Point(76, 96)
+        'PbUang3.Visible = False
+        'PbUang4.Visible = True
+        'PbUang4.Location = New Point(76, 94)
+        'PbUang4.Visible = False
+        'PbUang5.Visible = True
+        'PbUang5.Location = New Point(76, 92)
+        'PbUang5.Visible = False
+        'PbUang6.Visible = True
+        'PbUang6.Location = New Point(76, 90)
+        'PbUang6.Visible = False
+        'Timer1.Enabled = False
+    End Sub
+
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles BtnBeli.Click
+        PbUang.Visible = True
+        Timer1.Enabled = True
+
+    End Sub
+
+    Private Sub PilA_Click(sender As Object, e As EventArgs) Handles PilA.Click
+        PilA.Enabled = False
+        PilB.Enabled = False
+        PilC.Enabled = False
+        PilD.Enabled = False
+        Pil1.Enabled = True
+        Pil2.Enabled = True
+        Pil3.Enabled = True
+        Pil4.Enabled = True
+    End Sub
+    Private Sub PilB_Click(sender As Object, e As EventArgs) Handles PilA.Click
+        PilA.Enabled = False
+        PilB.Enabled = False
+        PilC.Enabled = False
+        PilD.Enabled = False
+        Pil1.Enabled = True
+        Pil2.Enabled = True
+        Pil3.Enabled = True
+        Pil4.Enabled = True
+    End Sub
+    Private Sub PilC_Click(sender As Object, e As EventArgs) Handles PilA.Click
+        PilA.Enabled = False
+        PilB.Enabled = False
+        PilC.Enabled = False
+        PilD.Enabled = False
+        Pil1.Enabled = True
+        Pil2.Enabled = True
+        Pil3.Enabled = True
+        Pil4.Enabled = True
+    End Sub
+    Private Sub PilD_Click(sender As Object, e As EventArgs) Handles PilA.Click
+        PilA.Enabled = False
+        PilB.Enabled = False
+        PilC.Enabled = False
+        PilD.Enabled = False
+        Pil1.Enabled = True
+        Pil2.Enabled = True
+        Pil3.Enabled = True
+        Pil4.Enabled = True
+    End Sub
+
+    Private Sub Pil1_Click(sender As Object, e As EventArgs) Handles Pil1.Click
+        Dim cekA As Integer
+        cekA = vending(0, 0)
+        If cekA > 0 And cekA <= 5 Then
+            cekA = cekA - 1
+            vending(0, 0) = cekA
+            If vending(0, 0) = 0 Then
+                PbAE1.Visible = True
+            End If
+            PbA.Visible = True
+                Timer2.Enabled = True
+                lblqA1.Text = "Q=(" + vending(0, 0).ToString + ")"
+                lblPesan.Text = "Terima Kasih"
+                Pil1.Enabled = False
+                Pil2.Enabled = False
+                Pil3.Enabled = False
+                Pil4.Enabled = False
+            Else
+                lblPesan.Text = "Maaf Stock Habis"
+            Pil2.Enabled = True
+            Pil3.Enabled = True
+            Pil4.Enabled = True
+        End If
+    End Sub
+
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+        If (PbA.Visible = True) Then
+            If PbA.Location.Y = 422 And PbA.Location.X = 530 Then
+                'PbA.Location = New Point(PbA.Location.X - 5, PbA.Location.Y - 5)
+                PbA.Location = New Point(551, 422)
+                Timer2.Enabled = False
+                PbA.Visible = False
+                PbAmbil.Visible = False
+                PbA1.Visible = True
+                BtnAmbil.Enabled = True
+                PbA.Location = New Point(530, 12)
+
+            Else
+
+                If PbA.Location.Y >= 12 And PbA.Location.X = 530 Then
+                    PbA.Location = New Point(530, PbA.Location.Y + 1)
+                End If
+
+            End If
+        Else
+        End If
+
+
+    End Sub
+
+    Private Sub BtnAmbil_Click(sender As Object, e As EventArgs) Handles BtnAmbil.Click
+        PbA1.Visible = False
+        PbAmbil.Visible = True
+        BtnBeli.Enabled = True
+        BtnAmbil.Enabled = False
+        PilA.Enabled = False
+        PilB.Enabled = False
+        PilC.Enabled = False
+        PilD.Enabled = False
+        Pil1.Enabled = False
+        Pil2.Enabled = False
+        Pil3.Enabled = False
+        Pil4.Enabled = False
+        lblPesan.Text = "Selamat Datang"
+
+    End Sub
+
+    Private Sub Pil2_Click(sender As Object, e As EventArgs) Handles Pil2.Click
+        Dim cekA As Integer
+        cekA = vending(0, 1)
+        If cekA > 0 And cekA <= 5 Then
+            cekA = cekA - 1
+            vending(0, 1) = cekA
+            If vending(0, 1) = 0 Then
+                PbAE2.Visible = True
+            End If
+            PbA.Visible = True
+            Timer2.Enabled = True
+            lblqA2.Text = "Q=(" + vending(0, 1).ToString + ")"
+            lblPesan.Text = "Terima Kasih"
+            Pil1.Enabled = False
+            Pil2.Enabled = False
+            Pil3.Enabled = False
+            Pil4.Enabled = False
+        Else
+            lblPesan.Text = "Maaf Stock Habis"
+            Pil1.Enabled = True
+            Pil3.Enabled = True
+            Pil4.Enabled = True
+        End If
+    End Sub
+End Class
